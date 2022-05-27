@@ -19,12 +19,12 @@ export const DaySection = ({ fiveDays, historical, weekly, day }: DaySectionProp
     const { list, alert } = getModifiedHourlyData(fiveDays, historical, weekly, day)
 
     return (
-        <section className='p-6 mt-4 bg-indigo-100 rounded-2xl'>
+        <section className='p-6 mt-4 from-indigo-100 via-blue-100 to-indigo-200 bg-gradient-to-br rounded-2xl'>
             <div className='flex items-center justify-between flex-col md:flex-row'>
                 <p className='text-4xl pl-4'>{`${day.value.format('DD')}.${day.value.format('MM')}.${day.value.format('YYYY')}`}</p>
                 {alert && <p className='text-xl pl-8'>More accurate data for this day will be available at {day.value.subtract(1, 'day').format('DD.MM.YYYY')}</p>}
             </div>
-            <div className="mt-2 flex justify-between overflow-x-auto flex-col md:flex-row">
+            <div className="flex justify-between overflow-x-auto flex-col md:flex-row">
                 {list.map(item => (
                     <InfoCard
                         key={item.dt}

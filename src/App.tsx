@@ -22,8 +22,8 @@ export const App = () => {
 
   return (
     <>
-      <header className='w-full p-4 flex top-0 justify-between items-center bg-violet-900 text-white z-50'>
-        <p className='text-xl'>Weather Forecast</p>
+      <header className='w-full p-4 flex top-0 justify-between items-center from-indigo-900 to-violet-800 via-indigo-900 bg-gradient-to-r text-white z-50'>
+        <p className='text-xl tracking-widest'>Weather Forecast</p>
         <span>
           <label htmlFor='city' className='mr-4'>Enter city name:</label>
           <input
@@ -38,7 +38,7 @@ export const App = () => {
           </datalist>
         </span>
       </header>
-      <main className='container p-4 pt-14 mx-auto min-h-screen flex flex-col bg-neutral-50 font-light text-black'>
+      <main className='container p-4 mx-auto flex flex-col font-light text-black lg:px-36 md:pt-8 '>
         <span className='flex items-center justify-between flex-col md:flex-row md:items-end'>
           <h1 className='text-6xl text-center sm:text-left '>
             {location.name} {`${dayjs().format('DD.MM.YYYY')}-${dayjs().add(6, 'day').format('DD.MM.YYYY')}`}
@@ -53,6 +53,7 @@ export const App = () => {
         </span>
         {weekly &&
           <WeekSection
+            day={day}
             data={weekly}
             handleClick={(value: dayjs.Dayjs, dayIndex: number) => { setDay({ value, dayIndex }) }} />}
         {fiveDays && historical && weekly &&
