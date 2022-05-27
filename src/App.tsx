@@ -40,11 +40,11 @@ export const App = () => {
       </header>
       <main className='container p-4 pt-14 mx-auto min-h-screen flex flex-col bg-neutral-50 font-light text-black'>
         <span className='flex items-center justify-between flex-col md:flex-row md:items-end'>
-          <h2 className='text-6xl text-center sm:text-left '>
+          <h1 className='text-6xl text-center sm:text-left '>
             {location.name} {`${dayjs().format('DD.MM.YYYY')}-${dayjs().add(6, 'day').format('DD.MM.YYYY')}`}
-          </h2>
+          </h1>
           <a
-            href='https://github.com/Karriuz/weather-forecast'
+            href='https://github.com/Karriuz/weather-forecast-app'
             rel='noreferrer'
             target={'_blank'}
             className='text-xl font-normal mr-4 text-stone-600'>
