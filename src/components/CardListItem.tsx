@@ -1,17 +1,15 @@
 interface CardListItemProps {
-    children: string | string[]
-    pStyles?: string
-    Icon: Function
+    children: React.ReactNode
+    Icon: React.FunctionComponent<{ className?: string, alt?: string }>
     iconStyles?: string
     liStyles?: string
-    iconLabel: string
-    iconTitle: string
+    alt: string
 }
 
-export const CardListItem = ({ children, pStyles, Icon, iconStyles, liStyles, iconLabel, iconTitle }: CardListItemProps): JSX.Element => {
+export const CardListItem = ({ children, Icon, iconStyles, liStyles, alt }: CardListItemProps): JSX.Element => {
     return (
-        <li className={'flex items-center text-center mt-1 ' + liStyles}>
-            <Icon alt={iconLabel} title={iconTitle} className={'h-7 w-7 ' + iconStyles} /><p className={'text-lg p-2 grow ' + pStyles}>{children}</p>
+        <li className={'flex items-center text-center mt-1 ' + liStyles} title={alt}>
+            <Icon className={`h7 w7 + ${iconStyles}`} alt={alt} /><p className={'text-lg p-2 grow '}>{children}</p>
         </li>
     );
 }

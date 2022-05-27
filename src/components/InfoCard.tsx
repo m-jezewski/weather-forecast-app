@@ -3,7 +3,7 @@ type InfoCardProps = {
     dayName?: string
     hour?: string
     date?: string
-    children: | JSX.Element | JSX.Element[] | string | string[];
+    children: React.ReactNode
 }
 
 export const InfoCard = ({ containerStyles, dayName, date, children, hour }: InfoCardProps) => {

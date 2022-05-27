@@ -1,4 +1,10 @@
-import { ModifiedDaysData, WeeklyCallResponse, ModifiedHourlyData, Day, fetchedData } from './interfaces'
+import {
+  ModifiedDaysData,
+  WeeklyCallResponse,
+  FiveDaysCallResponse,
+  HistoricalCallResponse,
+  ModifiedHourlyData,
+} from './interfaces'
 import dayjs from 'dayjs'
 
 export const getModifiedWeeklyData = (weeklyData: WeeklyCallResponse): ModifiedDaysData => {
@@ -18,14 +24,19 @@ export const getModifiedWeeklyData = (weeklyData: WeeklyCallResponse): ModifiedD
   }
 }
 
-export const getModifiedHourlyData = (fetchedData: fetchedData, day: Day): ModifiedHourlyData => {
+export const getModifiedHourlyData = (
+  fiveDays: FiveDaysCallResponse,
+  historical: HistoricalCallResponse,
+  weekly: WeeklyCallResponse,
+  day: { value: dayjs.Dayjs; dayIndex: number }
+): ModifiedHourlyData => {
   const hourlyData = {
-    today: [...fetchedData.historical!.hourly, ...fetchedData.weekly!.hourly],
-    fiveDays: fetchedData.fiveDays!.list,
+    today: [...historical.hourly, ...weekly.hourly],
+    fiveDays: fiveDays.list,
   }
 
   const data: ModifiedHourlyData =
-    day.dayIndex === 0 || day.dayIndex === 1
+    day.dayIndex < 2
       ? {
           list: hourlyData.today
             .filter((item) => dayjs(item.dt * 1000).date() === day.value.date())

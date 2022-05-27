@@ -1,20 +1,3 @@
-import dayjs from 'dayjs'
-
-interface City {
-  id?: number
-  name: string
-  coord: {
-    lat: number
-    lon?: number
-  }
-  lon?: number
-}
-
-interface Day {
-  value: dayjs.Dayjs
-  dayIndex: number
-}
-
 interface WeeklyDataItem {
   dt: number
   sunrise: number
@@ -161,7 +144,6 @@ interface FiveDaysCallResponse {
   list: FiveDaysDataItem[]
   message: number
 }
-
 interface HistoricalCallResponse {
   current: {}
   hourly: HourlyDataItem[]
@@ -171,10 +153,4 @@ interface HistoricalCallResponse {
   timezone_offset: number
 }
 
-interface fetchedData {
-  fiveDays: FiveDaysCallResponse | null
-  weekly: WeeklyCallResponse | null
-  historical: HistoricalCallResponse | null
-}
-
-export type { ModifiedDaysData, WeeklyCallResponse, City, ModifiedHourlyData, Day, fetchedData }
+export type { ModifiedDaysData, WeeklyCallResponse, HistoricalCallResponse, FiveDaysCallResponse, ModifiedHourlyData }

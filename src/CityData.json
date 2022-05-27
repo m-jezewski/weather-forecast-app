@@ -18451,9 +18451,9 @@
     "id": 798544,
     "name": "Republic of Poland",
     "coord": {
-      "lat": 52
-    },
-    "lon": 20
+      "lat": 52,
+      "lon": 20
+    }
   },
   {
     "id": 7533085,
@@ -24091,25 +24091,25 @@
     "id": 3337492,
     "name": "Województwo Dolnośląskie",
     "coord": {
-      "lat": 51
-    },
-    "lon": 16.5
+      "lat": 51,
+      "lon": 16.5
+    }
   },
   {
     "id": 3337500,
     "name": "Województwo Kujawsko-Pomorskie",
     "coord": {
-      "lat": 53
-    },
-    "lon": 18.5
+      "lat": 53,
+      "lon": 18.5
+    }
   },
   {
     "id": 858785,
     "name": "Województwo Lubelskie",
     "coord": {
-      "lat": 51
-    },
-    "lon": 23
+      "lat": 51,
+      "lon": 23
+    }
   },
   {
     "id": 3337494,
@@ -24147,9 +24147,9 @@
     "id": 858788,
     "name": "Województwo Podkarpackie",
     "coord": {
-      "lat": 50
-    },
-    "lon": 22
+      "lat": 50,
+      "lon": 22
+    }
   },
   {
     "id": 858789,
