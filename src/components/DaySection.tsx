@@ -3,7 +3,7 @@ import { FiveDaysCallResponse, WeeklyCallResponse, HistoricalCallResponse } from
 import { Droplet, Wind, Thermometer, ChevronsDown, Cloud } from 'react-feather'
 import { getModifiedHourlyData } from '../utils'
 import { CardListItem } from './CardListItem'
-import { InfoCard } from './InfoCard'
+import { Card } from './Card'
 
 type DaySectionProps = {
     fiveDays: FiveDaysCallResponse
@@ -26,7 +26,7 @@ export const DaySection = ({ fiveDays, historical, weekly, day }: DaySectionProp
             </div>
             <div className="flex justify-between overflow-x-auto flex-col md:flex-row">
                 {list.map(item => (
-                    <InfoCard
+                    <Card
                         key={item.dt}
                         date={item.date}
                         hour={item.hour}
@@ -38,7 +38,7 @@ export const DaySection = ({ fiveDays, historical, weekly, day }: DaySectionProp
                             <CardListItem alt='Humidity' liStyles='mt-0' Icon={Droplet} iconStyles='fill-sky-100'>{item.humidity} %</CardListItem>
                             <CardListItem alt='Pressure' liStyles='mt-0' Icon={ChevronsDown}>{item.pressure} hPa</CardListItem>
                         </ul>
-                    </InfoCard>
+                    </Card>
                 ))}
             </div>
         </section>

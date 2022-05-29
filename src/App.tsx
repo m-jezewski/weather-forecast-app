@@ -22,25 +22,25 @@ export const App = () => {
 
   return (
     <>
-      <header className='w-full p-4 flex top-0 justify-between items-center from-indigo-900 to-violet-800 via-indigo-900 bg-gradient-to-r text-white z-50'>
-        <p className='text-xl tracking-widest'>Weather Forecast</p>
-        <span>
-          <label htmlFor='city' className='mr-4'>Enter city name:</label>
+      <header className='w-full p-4 flex top-0 justify-center md:justify-between items-center from-indigo-900 to-violet-800 via-indigo-900 bg-gradient-to-r text-white z-50'>
+        <p className='text-xl tracking-widest hidden md:block'>Weather Forecast</p>
+        <label className='text-center'>
+          Enter city name:
           <input
             list="cities"
             id='city'
             placeholder='Enter City Name'
             onChange={(e) => { handleInputChange(e.target.value) }}
-            className='bg-neutral-50 p-2 text-black' />
+            className='bg-neutral-50 p-2 text-black mx-4' />
           <datalist id='cities'>
             {cityInfo.map(item => (
               <option value={item.name} key={item.id}>{item.name}</option>))}
           </datalist>
-        </span>
+        </label>
       </header>
-      <main className='container p-4 mx-auto flex flex-col font-light text-black lg:px-36 md:pt-8 '>
+      <main className='container p-4 mx-auto flex flex-col font-light text-black lg:px-36 md:pt-10 '>
         <span className='flex items-center justify-between flex-col md:flex-row md:items-end'>
-          <h1 className='text-6xl text-center sm:text-left '>
+          <h1 className='text-5xl font-light text-center sm:text-left'>
             {location.name} {`${dayjs().format('DD.MM.YYYY')}-${dayjs().add(6, 'day').format('DD.MM.YYYY')}`}
           </h1>
           <a

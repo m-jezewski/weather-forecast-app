@@ -3,7 +3,7 @@ import { getModifiedWeeklyData } from '../utils'
 import { Droplet, Sun, Moon, Wind, } from 'react-feather'
 import { CardListItem } from './CardListItem'
 import dayjs from 'dayjs'
-import { InfoCard } from './InfoCard'
+import { Card } from './Card'
 
 type WeekSectionProps = {
     data: WeeklyCallResponse
@@ -14,9 +14,9 @@ type WeekSectionProps = {
 export const WeekSection = ({ data, handleClick, day }: WeekSectionProps) => {
     const { list } = getModifiedWeeklyData(data)
     return (
-        <section className="flex justify-between flex-col md:flex-row pb-2 mt-8 overflow-auto basis-auto">
+        <section className="flex justify-between flex-col md:flex-row pb-2 mt-4 overflow-auto basis-auto">
             {list.map(item =>
-                <InfoCard key={item.dt} date={item.date} dayName={item.fullNameDay} containerStyles={list.indexOf(item) === day.dayIndex ? 'ring-indigo-600 ring-2' : ''}>
+                <Card key={item.dt} date={item.date} dayName={item.fullNameDay} containerStyles={list.indexOf(item) === day.dayIndex ? 'ring-indigo-600 ring-2' : ''}>
                     <ul>
                         <CardListItem alt='Temperature Day' Icon={Sun} iconStyles='fill-yellow-100'>{item.tempDay}°C</CardListItem>
                         <CardListItem alt='Temperature Night' Icon={Moon} iconStyles='fill-sky-100'>{item.tempNight}°C</CardListItem>
@@ -30,7 +30,7 @@ export const WeekSection = ({ data, handleClick, day }: WeekSectionProps) => {
                         onClick={() => (handleClick(dayjs(item.dt), list.indexOf(item)))}>
                         More
                     </button>
-                </InfoCard>
+                </Card>
             )}
         </section>
     );
