@@ -1,27 +1,19 @@
-import {
-  ModifiedDaysData,
-  WeeklyCallResponse,
-  FiveDaysCallResponse,
-  HistoricalCallResponse,
-  ModifiedHourlyData,
-} from './interfaces'
+import { WeeklyCallResponse, FiveDaysCallResponse, HistoricalCallResponse } from './interfaces'
 import dayjs from 'dayjs'
 
-export const getModifiedWeeklyData = (weeklyData: WeeklyCallResponse): ModifiedDaysData => {
+export const getModifiedWeeklyData = (weeklyData: WeeklyCallResponse) => {
   if (weeklyData.daily.length === 8) weeklyData.daily.pop()
 
-  return {
-    list: weeklyData.daily.map((item) => ({
-      index: weeklyData.daily.indexOf(item),
-      fullNameDay: dayjs(item.dt * 1000).format('dddd'),
-      date: dayjs(item.dt * 1000).format('DD.MM'),
-      tempDay: item.temp.day.toFixed(1),
-      tempNight: item.temp.night.toFixed(1),
-      dt: item.dt * 1000,
-      windSpeed: (item.wind_speed * 3.6).toFixed(1),
-      humidity: item.humidity.toFixed(1),
-    })),
-  }
+  return weeklyData.daily.map((item) => ({
+    index: weeklyData.daily.indexOf(item),
+    fullNameDay: dayjs(item.dt * 1000).format('dddd'),
+    date: dayjs(item.dt * 1000).format('DD.MM'),
+    tempDay: item.temp.day.toFixed(1),
+    tempNight: item.temp.night.toFixed(1),
+    dt: item.dt * 1000,
+    windSpeed: (item.wind_speed * 3.6).toFixed(1),
+    humidity: item.humidity.toFixed(1),
+  }))
 }
 
 export const getModifiedHourlyData = (
@@ -29,13 +21,13 @@ export const getModifiedHourlyData = (
   historical: HistoricalCallResponse,
   weekly: WeeklyCallResponse,
   day: { value: dayjs.Dayjs; dayIndex: number }
-): ModifiedHourlyData => {
+) => {
   const hourlyData = {
     today: [...historical.hourly, ...weekly.hourly],
     fiveDays: fiveDays.list,
   }
 
-  const data: ModifiedHourlyData =
+  const data =
     day.dayIndex < 2
       ? {
           list: hourlyData.today

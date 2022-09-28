@@ -1,31 +1,29 @@
 import dayjs from 'dayjs'
-import { FiveDaysCallResponse, WeeklyCallResponse, HistoricalCallResponse } from '../interfaces'
 import { Droplet, Wind, Thermometer, ChevronsDown, Cloud } from 'react-feather'
 import { getModifiedHourlyData } from '../utils'
 import { CardListItem } from './CardListItem'
 import { Card } from './Card'
+import { useDataContext } from '../hooks/useDataContext'
 
 type DaySectionProps = {
-    fiveDays: FiveDaysCallResponse
-    historical: HistoricalCallResponse
-    weekly: WeeklyCallResponse
     day: {
         value: dayjs.Dayjs,
         dayIndex: number,
     }
 }
 
-export const DaySection = ({ fiveDays, historical, weekly, day }: DaySectionProps) => {
-    const { list, alert } = getModifiedHourlyData(fiveDays, historical, weekly, day)
+export const DaySection = ({ day }: DaySectionProps) => {
+    const { fiveDays, historical, weekly } = useDataContext()
+    const hourlyData = fiveDays && historical && weekly && getModifiedHourlyData(fiveDays, historical, weekly, day)
 
     return (
         <section className='p-6 mt-4 from-indigo-100 via-blue-100 to-indigo-200 bg-gradient-to-br rounded-2xl'>
             <div className='flex items-center justify-between flex-col md:flex-row'>
                 <p className='text-4xl pl-4'>{`${day.value.format('DD')}.${day.value.format('MM')}.${day.value.format('YYYY')}`}</p>
-                {alert && <p className='text-xl pl-8'>More accurate data for this day will be available at {day.value.subtract(1, 'day').format('DD.MM.YYYY')}</p>}
+                {hourlyData?.alert && <p className='text-xl pl-8'>More accurate data for this day will be available at {day.value.subtract(1, 'day').format('DD.MM.YYYY')}</p>}
             </div>
             <div className="flex justify-between overflow-x-auto flex-col md:flex-row">
-                {list.map(item => (
+                {hourlyData?.list.map(item => (
                     <Card
                         key={item.dt}
                         date={item.date}

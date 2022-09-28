@@ -1,3 +1,12 @@
+interface Location {
+  id: number
+  name: string
+  coord: {
+    lat: number
+    lon: number
+  }
+}
+
 interface WeeklyDataItem {
   dt: number
   sunrise: number
@@ -99,34 +108,6 @@ interface HourlyDataItem {
   pop: number
 }
 
-interface ModifiedDaysData {
-  list: {
-    index: number
-    fullNameDay: string
-    date: string
-    tempDay: string
-    tempNight: string
-    dt: number
-    windSpeed: string
-    humidity: string
-  }[]
-}
-
-interface ModifiedHourlyData {
-  list: {
-    type: 'today' | 'fiveDays'
-    date: string
-    hour: string
-    dt: number
-    temp: string
-    humidity: string
-    pressure: string
-    windSpeed: string
-    weather: string
-  }[]
-  alert?: boolean
-}
-
 interface WeeklyCallResponse {
   current: {}
   daily: WeeklyDataItem[]
@@ -153,4 +134,4 @@ interface HistoricalCallResponse {
   timezone_offset: number
 }
 
-export type { ModifiedDaysData, WeeklyCallResponse, HistoricalCallResponse, FiveDaysCallResponse, ModifiedHourlyData }
+export type { WeeklyCallResponse, HistoricalCallResponse, FiveDaysCallResponse, Location }
