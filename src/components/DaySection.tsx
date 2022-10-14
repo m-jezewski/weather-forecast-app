@@ -22,7 +22,7 @@ export const DaySection = ({ day }: DaySectionProps) => {
                 <p className='text-4xl pl-4'>{`${day.value.format('DD')}.${day.value.format('MM')}.${day.value.format('YYYY')}`}</p>
                 {hourlyData?.alert && <p className='text-xl pl-8'>More accurate data for this day will be available at {day.value.subtract(1, 'day').format('DD.MM.YYYY')}</p>}
             </div>
-            <div className="flex justify-between overflow-x-auto flex-col md:flex-row">
+            <div className="flex justify-between overflow-x-auto flex-row">
                 {hourlyData?.list.map(item => (
                     <Card
                         key={item.dt}

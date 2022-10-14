@@ -11,7 +11,7 @@ export const App = () => {
   return (
     <>
       <Header />
-      <main className='container p-4 mx-auto flex flex-col font-light text-black lg:px-36 md:pt-10 '>
+      <main className='container p-4 mx-auto flex flex-col font-light text-black lg:px-4 md:pt-10 '>
         <Title />
         <WeekSection day={day} setDay={setDay} />
         <DaySection day={day} />
